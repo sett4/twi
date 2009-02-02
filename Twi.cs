@@ -31,6 +31,8 @@ namespace potwitter
             byte[] data = Encoding.ASCII.GetBytes(sb.ToString());
 
             HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
+            req.ServicePoint.Expect100Continue = false;
+
             req.Credentials = new System.Net.NetworkCredential(username, password);
             req.Method = "POST";
             req.ContentType = "application/x-www-form-urlencoded";
